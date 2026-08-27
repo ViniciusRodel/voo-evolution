@@ -1,0 +1,18 @@
+# Cache de importação do Godot — regenerado ao abrir o projeto.
+.godot/
+# Builds exportados.
+build/
+export/
+*.apk
+*.aab
+# Artefatos da toolchain C#, caso o módulo opcional seja habilitado.
+.mono/
+bin/
+obj/
+*.csproj.user
+# Save local do jogador (nunca deve ir para o repositório).
+progresso.json
+# Lixo comum de SO/editor.
+.DS_Store
+Thumbs.db
+*.tmp

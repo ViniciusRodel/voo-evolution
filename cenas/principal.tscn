@@ -1,0 +1,350 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://cenas/principal.gd" id="1_principal"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="2_hud"]
+[ext_resource type="Script" path="res://ui/velocimetro.gd" id="3_veloc"]
+[ext_resource type="Script" path="res://ui/barra_progresso.gd" id="4_barra"]
+[ext_resource type="Script" path="res://ui/loja.gd" id="5_loja"]
+[ext_resource type="Script" path="res://ui/estilingue.gd" id="6_estilingue"]
+[ext_resource type="Script" path="res://ui/resultado.gd" id="7_resultado"]
+[ext_resource type="Script" path="res://ui/monitor_desempenho.gd" id="8_monitor"]
+[ext_resource type="Script" path="res://ui/ajuste_moedas.gd" id="9_ajuste_moedas"]
+
+[node name="Principal" type="Node"]
+script = ExtResource("1_principal")
+
+[node name="Mundo" type="Node3D" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("2_hud")
+
+[node name="Raiz" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Distancia" type="Label" parent="HUD/Raiz"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.0
+offset_top = 40.0
+offset_right = 260.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.65)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 46
+text = "0 M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Barra" type="Control" parent="HUD/Raiz"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_top = 150.0
+offset_right = -52.0
+offset_bottom = 760.0
+grow_horizontal = 0
+mouse_filter = 2
+script = ExtResource("4_barra")
+
+[node name="Velocimetro" type="Control" parent="HUD/Raiz"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = -268.0
+offset_right = 264.0
+offset_bottom = -48.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("3_veloc")
+maximo = 100.0
+
+[node name="BotaoImpulso" type="Button" parent="HUD/Raiz"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -292.0
+offset_top = -244.0
+offset_right = -44.0
+offset_bottom = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 34
+text = "IMPULSO"
+
+[node name="Aviso" type="Label" parent="HUD/Raiz"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = 120.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.7)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 54
+text = "+1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="Loja" type="Control" parent="Interface"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_loja")
+
+[node name="Fundo" type="ColorRect" parent="Interface/Loja"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.101961, 0.113725, 0.152941, 1)
+
+[node name="Topo" type="VBoxContainer" parent="Interface/Loja"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 40.0
+offset_top = 44.0
+offset_right = -40.0
+offset_bottom = 236.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="Moedas" type="Label" parent="Interface/Loja/Topo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.831373, 0.317647, 1)
+theme_override_font_sizes/font_size = 40
+text = "0 MOEDAS"
+horizontal_alignment = 1
+
+[node name="Titulo" type="Label" parent="Interface/Loja/Topo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "FASE 1 · META 3.900 M"
+horizontal_alignment = 1
+
+[node name="Resumo" type="Label" parent="Interface/Loja/Topo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.717647, 0.745098, 0.807843, 1)
+theme_override_font_sizes/font_size = 19
+text = "AVIAO NIVEL 1/20"
+horizontal_alignment = 1
+
+[node name="Lista" type="ScrollContainer" parent="Interface/Loja"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 256.0
+offset_right = -32.0
+offset_bottom = -184.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Conteudo" type="VBoxContainer" parent="Interface/Loja/Lista"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="Rodape" type="VBoxContainer" parent="Interface/Loja"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -160.0
+offset_right = -40.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Voar" type="Button" parent="Interface/Loja/Rodape"]
+custom_minimum_size = Vector2(0, 116)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "VOAR"
+
+[node name="Estilingue" type="Control" parent="Interface"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_estilingue")
+
+[node name="Instrucao" type="Label" parent="Interface/Estilingue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -142.0
+offset_right = 440.0
+offset_bottom = -72.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.7)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 34
+text = "SOLTE NO VERDE PARA LANCAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resultado" type="Label" parent="Interface/Estilingue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -168.0
+offset_right = 440.0
+offset_bottom = -64.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.7)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+text = "PERFEITO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resultado" type="Control" parent="Interface"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_resultado")
+
+[node name="Painel" type="PanelContainer" parent="Interface/Resultado"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -440.0
+offset_right = 480.0
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Caixa" type="VBoxContainer" parent="Interface/Resultado/Painel"]
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="Titulo" type="Label" parent="Interface/Resultado/Painel/Caixa"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "META ALCANCADA!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Detalhes" type="Label" parent="Interface/Resultado/Painel/Caixa"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/line_spacing = 14
+theme_override_font_sizes/font_size = 26
+text = "DISTANCIA: 0 M"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Destaque" type="Label" parent="Interface/Resultado/Painel/Caixa"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.407843, 0.870588, 0.470588, 1)
+theme_override_font_sizes/font_size = 30
+text = "FASE LIBERADA"
+horizontal_alignment = 1
+
+[node name="Botoes" type="HBoxContainer" parent="Interface/Resultado/Painel/Caixa"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Novamente" type="Button" parent="Interface/Resultado/Painel/Caixa/Botoes"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "VOAR DE NOVO"
+
+[node name="Menu" type="Button" parent="Interface/Resultado/Painel/Caixa/Botoes"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "MELHORAR"
+
+[node name="Monitor" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="MonitorDesempenho" type="Control" parent="Monitor"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_monitor")
+
+[node name="Painel" type="PanelContainer" parent="Monitor/MonitorDesempenho"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 24.0
+offset_top = 200.0
+offset_right = 580.0
+offset_bottom = 700.0
+mouse_filter = 2
+
+[node name="Texto" type="Label" parent="Monitor/MonitorDesempenho/Painel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.615686, 1, 0.686275, 1)
+theme_override_font_sizes/font_size = 20
+text = "aguardando amostras..."
+
+[node name="AjusteMoedas" type="Control" parent="Monitor"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_ajuste_moedas")
